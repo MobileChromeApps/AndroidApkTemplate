@@ -1,154 +1,17 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/org.apache.cordova.battery-status/www/battery.js",
-        "id": "org.apache.cordova.battery-status.battery",
+        "file": "plugins/org.apache.cordova.UrlRemap/urlremap.js",
+        "id": "org.apache.cordova.UrlRemap.UrlRemap",
         "clobbers": [
-            "navigator.battery"
+            "cordova.plugins.urlremap"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
-        "id": "org.apache.cordova.camera.Camera",
+        "file": "plugins/org.apache.appharness.AppHarnessUI/appharnessui.js",
+        "id": "org.apache.appharness.AppHarnessUI.AppHarnessUI",
         "clobbers": [
-            "Camera"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
-        "id": "org.apache.cordova.camera.CameraPopoverOptions",
-        "clobbers": [
-            "CameraPopoverOptions"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
-        "id": "org.apache.cordova.camera.camera",
-        "clobbers": [
-            "navigator.camera"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
-        "id": "org.apache.cordova.camera.CameraPopoverHandle",
-        "clobbers": [
-            "CameraPopoverHandle"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/contacts.js",
-        "id": "org.apache.cordova.contacts.contacts",
-        "clobbers": [
-            "navigator.contacts"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/Contact.js",
-        "id": "org.apache.cordova.contacts.Contact",
-        "clobbers": [
-            "Contact"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactAddress.js",
-        "id": "org.apache.cordova.contacts.ContactAddress",
-        "clobbers": [
-            "ContactAddress"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactError.js",
-        "id": "org.apache.cordova.contacts.ContactError",
-        "clobbers": [
-            "ContactError"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactField.js",
-        "id": "org.apache.cordova.contacts.ContactField",
-        "clobbers": [
-            "ContactField"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactFindOptions.js",
-        "id": "org.apache.cordova.contacts.ContactFindOptions",
-        "clobbers": [
-            "ContactFindOptions"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactName.js",
-        "id": "org.apache.cordova.contacts.ContactName",
-        "clobbers": [
-            "ContactName"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactOrganization.js",
-        "id": "org.apache.cordova.contacts.ContactOrganization",
-        "clobbers": [
-            "ContactOrganization"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.contacts/www/ContactFieldType.js",
-        "id": "org.apache.cordova.contacts.ContactFieldType"
-    },
-    {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device-motion/www/Acceleration.js",
-        "id": "org.apache.cordova.device-motion.Acceleration",
-        "clobbers": [
-            "Acceleration"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device-motion/www/accelerometer.js",
-        "id": "org.apache.cordova.device-motion.accelerometer",
-        "clobbers": [
-            "navigator.accelerometer"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device-orientation/www/CompassError.js",
-        "id": "org.apache.cordova.device-orientation.CompassError",
-        "clobbers": [
-            "CompassError"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device-orientation/www/CompassHeading.js",
-        "id": "org.apache.cordova.device-orientation.CompassHeading",
-        "clobbers": [
-            "CompassHeading"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device-orientation/www/compass.js",
-        "id": "org.apache.cordova.device-orientation.compass",
-        "clobbers": [
-            "navigator.compass"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
-        "id": "org.apache.cordova.dialogs.notification",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.dialogs/www/android/notification.js",
-        "id": "org.apache.cordova.dialogs.notification_android",
-        "merges": [
-            "navigator.notification"
+            "cordova.plugins.appharnessui"
         ]
     },
     {
@@ -312,6 +175,190 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.network-information/www/network.js",
+        "id": "org.apache.cordova.network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.network-information/www/Connection.js",
+        "id": "org.apache.cordova.network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "file": "plugins/org.chromium.socket/socket.js",
+        "id": "org.chromium.socket.Socket",
+        "clobbers": [
+            "chrome.socket"
+        ]
+    },
+    {
+        "file": "plugins/org.chromium.zip/zip.js",
+        "id": "org.chromium.zip.Zip",
+        "clobbers": [
+            "zip"
+        ]
+    },
+    {
+        "file": "plugins/org.chromium.zip/tests/tests.js",
+        "id": "org.chromium.zip.tests"
+    },
+    {
+        "file": "plugins/org.apache.cordova.battery-status/www/battery.js",
+        "id": "org.apache.cordova.battery-status.battery",
+        "clobbers": [
+            "navigator.battery"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
+        "id": "org.apache.cordova.camera.Camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
+        "id": "org.apache.cordova.camera.CameraPopoverOptions",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
+        "id": "org.apache.cordova.camera.camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
+        "id": "org.apache.cordova.camera.CameraPopoverHandle",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/contacts.js",
+        "id": "org.apache.cordova.contacts.contacts",
+        "clobbers": [
+            "navigator.contacts"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/Contact.js",
+        "id": "org.apache.cordova.contacts.Contact",
+        "clobbers": [
+            "Contact"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactAddress.js",
+        "id": "org.apache.cordova.contacts.ContactAddress",
+        "clobbers": [
+            "ContactAddress"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactError.js",
+        "id": "org.apache.cordova.contacts.ContactError",
+        "clobbers": [
+            "ContactError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactField.js",
+        "id": "org.apache.cordova.contacts.ContactField",
+        "clobbers": [
+            "ContactField"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactFindOptions.js",
+        "id": "org.apache.cordova.contacts.ContactFindOptions",
+        "clobbers": [
+            "ContactFindOptions"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactName.js",
+        "id": "org.apache.cordova.contacts.ContactName",
+        "clobbers": [
+            "ContactName"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactOrganization.js",
+        "id": "org.apache.cordova.contacts.ContactOrganization",
+        "clobbers": [
+            "ContactOrganization"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactFieldType.js",
+        "id": "org.apache.cordova.contacts.ContactFieldType"
+    },
+    {
+        "file": "plugins/org.apache.cordova.device-motion/www/Acceleration.js",
+        "id": "org.apache.cordova.device-motion.Acceleration",
+        "clobbers": [
+            "Acceleration"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device-motion/www/accelerometer.js",
+        "id": "org.apache.cordova.device-motion.accelerometer",
+        "clobbers": [
+            "navigator.accelerometer"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device-orientation/www/CompassError.js",
+        "id": "org.apache.cordova.device-orientation.CompassError",
+        "clobbers": [
+            "CompassError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device-orientation/www/CompassHeading.js",
+        "id": "org.apache.cordova.device-orientation.CompassHeading",
+        "clobbers": [
+            "CompassHeading"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device-orientation/www/compass.js",
+        "id": "org.apache.cordova.device-orientation.compass",
+        "clobbers": [
+            "navigator.compass"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
+        "id": "org.apache.cordova.dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/android/notification.js",
+        "id": "org.apache.cordova.dialogs.notification_android",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.globalization/www/GlobalizationError.js",
         "id": "org.apache.cordova.globalization.GlobalizationError",
         "clobbers": [
@@ -396,21 +443,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.network-information/www/network.js",
-        "id": "org.apache.cordova.network-information.network",
-        "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.network-information/www/Connection.js",
-        "id": "org.apache.cordova.network-information.Connection",
-        "clobbers": [
-            "Connection"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
         "id": "org.apache.cordova.splashscreen.SplashScreen",
         "clobbers": [
@@ -428,7 +460,8 @@ module.exports = [
         "file": "plugins/org.apache.cordova.vibration/www/vibration.js",
         "id": "org.apache.cordova.vibration.notification",
         "merges": [
-            "navigator.notification"
+            "navigator.notification",
+            "navigator"
         ]
     },
     {
@@ -455,10 +488,6 @@ module.exports = [
     {
         "file": "plugins/org.chromium.bootstrap/api/helpers/ChromeExtensionURLs.android.js",
         "id": "org.chromium.bootstrap.helpers.ChromeExtensionURLs"
-    },
-    {
-        "file": "plugins/org.chromium.filechooser/fileChooser.js",
-        "id": "org.chromium.filechooser.FileChooser"
     },
     {
         "file": "plugins/org.chromium.filesystem/fileSystem.js",
@@ -503,27 +532,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.chromium.polyfill.blob_constructor/Blob.js",
-        "id": "org.chromium.polyfill.blob_constructor.blob-constructor",
-        "merges": [
-            "window"
-        ]
-    },
-    {
-        "file": "plugins/org.chromium.polyfill.customevent/customEvent.js",
-        "id": "org.chromium.polyfill.customevent.customEvent",
-        "merges": [
-            "window"
-        ]
-    },
-    {
-        "file": "plugins/org.chromium.polyfill.xhr_features/xhr-blob.js",
-        "id": "org.chromium.polyfill.xhr_features.xhr-blob",
-        "merges": [
-            "window"
-        ]
-    },
-    {
         "file": "plugins/org.chromium.power/power.js",
         "id": "org.chromium.power.power",
         "clobbers": [
@@ -535,20 +543,6 @@ module.exports = [
         "id": "org.chromium.pushmessaging.pushMessaging",
         "clobbers": [
             "chrome.pushMessaging"
-        ]
-    },
-    {
-        "file": "plugins/org.chromium.socket/socket.js",
-        "id": "org.chromium.socket.Socket",
-        "clobbers": [
-            "chrome.socket"
-        ]
-    },
-    {
-        "file": "plugins/org.chromium.syncfilesystem/syncFileSystem.js",
-        "id": "org.chromium.syncfilesystem.SyncFileSystem",
-        "clobbers": [
-            "chrome.syncFileSystem"
         ]
     },
     {
@@ -580,15 +574,60 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.chromium.zip/zip.js",
-        "id": "org.chromium.zip.Zip",
+        "file": "plugins/org.chromium.syncfilesystem/syncFileSystem.js",
+        "id": "org.chromium.syncfilesystem.SyncFileSystem",
         "clobbers": [
-            "zip"
+            "chrome.syncFileSystem"
         ]
     },
     {
-        "file": "plugins/org.chromium.zip/tests/tests.js",
-        "id": "org.chromium.zip.tests"
+        "file": "plugins/org.chromium.polyfill.blob_constructor/Blob.js",
+        "id": "org.chromium.polyfill.blob_constructor.blob-constructor",
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "plugins/org.chromium.polyfill.customevent/customEvent.js",
+        "id": "org.chromium.polyfill.customevent.customEvent",
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "plugins/org.chromium.polyfill.xhr_features/xhr-blob.js",
+        "id": "org.chromium.polyfill.xhr_features.xhr-blob",
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.labs.keyboard/www/keyboard.js",
+        "id": "org.apache.cordova.labs.keyboard.keyboard",
+        "clobbers": [
+            "window.Keyboard"
+        ]
+    },
+    {
+        "file": "plugins/com.google.payments/www/google.payments.js",
+        "id": "com.google.payments.payments",
+        "clobbers": [
+            "google.payments"
+        ]
+    },
+    {
+        "file": "plugins/com.google.payments/www/android/google.payments.js",
+        "id": "com.google.payments.androidPayments",
+        "merges": [
+            "google.payments"
+        ]
+    },
+    {
+        "file": "plugins/org.chromium.apkpackager/apkpackager.js",
+        "id": "org.chromium.apkpackager.APKPackager",
+        "clobbers": [
+            "chrome.apkpackager"
+        ]
     },
     {
         "file": "plugins/org.chromium.common/events.js",
@@ -637,61 +676,71 @@ module.exports = [
     {
         "file": "plugins/org.chromium.runtime/lib/CryptoJS/enc-base64-min.js",
         "id": "org.chromium.runtime.CryptoJS-enc-base64-min"
+    },
+    {
+        "file": "plugins/org.chromium.filechooser/fileChooser.js",
+        "id": "org.chromium.filechooser.FileChooser"
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.battery-status": "0.2.10",
-    "org.apache.cordova.camera": "0.3.1",
-    "org.apache.cordova.contacts": "0.2.12",
-    "org.apache.cordova.device": "0.2.11",
-    "org.apache.cordova.device-motion": "0.2.9",
-    "org.apache.cordova.device-orientation": "0.3.8",
-    "org.apache.cordova.dialogs": "0.2.9",
-    "org.apache.cordova.file": "1.3.0",
-    "org.apache.cordova.file-transfer": "0.4.5",
-    "org.apache.cordova.geolocation": "0.3.9",
-    "org.apache.cordova.globalization": "0.3.0",
-    "org.apache.cordova.inappbrowser": "0.5.1",
-    "org.apache.cordova.media": "0.2.12",
-    "org.apache.cordova.media-capture": "0.3.2",
-    "org.apache.cordova.network-information": "0.2.11",
-    "org.apache.cordova.splashscreen": "0.3.2",
-    "org.apache.cordova.statusbar": "0.1.7",
-    "org.apache.cordova.vibration": "0.3.10",
-    "org.chromium.alarms": "1.0.1",
-    "org.chromium.audiocapture": "1.0.1",
-    "org.chromium.bootstrap": "1.0.2",
-    "org.chromium.filechooser": "1.0.1",
-    "org.chromium.filesystem": "1.0.2",
-    "org.chromium.gcm": "1.0.0",
-    "org.chromium.i18n": "1.0.1",
-    "org.chromium.identity": "1.2.2",
-    "org.chromium.idle": "1.0.0",
-    "org.chromium.navigation": "1.0.1",
-    "org.chromium.notifications": "1.0.4",
-    "org.chromium.polyfill.blob_constructor": "1.0.0",
-    "org.chromium.polyfill.customevent": "1.0.2",
-    "org.chromium.polyfill.xhr_features": "1.0.1",
-    "org.chromium.power": "1.0.2",
-    "org.chromium.pushmessaging": "1.0.1",
-    "org.chromium.socket": "1.1.3",
-    "org.chromium.syncfilesystem": "0.1.4",
-    "org.chromium.system.cpu": "1.0.0",
-    "org.chromium.system.display": "1.0.0",
-    "org.chromium.system.memory": "1.0.0",
-    "org.chromium.system.network": "1.0.0",
-    "org.chromium.videocapture": "1.0.1",
+    "org.apache.cordova.UrlRemap": "1.0.0",
+    "org.apache.appharness.AppHarnessUI": "0.0.1",
+    "org.apache.cordova.file": "1.3.1-dev",
+    "org.apache.cordova.file-transfer": "0.4.6-dev",
+    "org.apache.cordova.device": "0.2.12-dev",
+    "org.apache.cordova.network-information": "0.2.12-dev",
+    "org.chromium.socket": "1.1.4-dev",
     "org.chromium.zip": "2.1.0",
+    "org.apache.cordova.battery-status": "0.2.11-dev",
+    "org.apache.cordova.camera": "0.3.2-dev",
+    "org.apache.cordova.contacts": "0.2.13-dev",
+    "org.apache.cordova.device-motion": "0.2.10-dev",
+    "org.apache.cordova.device-orientation": "0.3.9-dev",
+    "org.apache.cordova.dialogs": "0.2.10-dev",
+    "org.apache.cordova.geolocation": "0.3.10-dev",
+    "org.apache.cordova.globalization": "0.3.1-dev",
+    "org.apache.cordova.inappbrowser": "0.5.2-dev",
+    "org.apache.cordova.media": "0.2.13-dev",
+    "org.apache.cordova.media-capture": "0.3.3-dev",
+    "org.apache.cordova.splashscreen": "0.3.3-dev",
+    "org.apache.cordova.statusbar": "0.1.8-dev",
+    "org.apache.cordova.vibration": "0.3.11-dev",
+    "org.chromium.alarms": "1.0.2-dev",
+    "org.chromium.audiocapture": "1.0.3-dev",
+    "org.chromium.bootstrap": "1.0.4-dev",
+    "org.chromium.filesystem": "1.0.4-dev",
+    "org.chromium.gcm": "1.0.2-dev",
+    "org.chromium.i18n": "1.0.2-dev",
+    "org.chromium.identity": "1.2.4-dev",
+    "org.chromium.idle": "1.0.1-dev",
+    "org.chromium.navigation": "1.0.2-dev",
+    "org.chromium.notifications": "1.0.5-dev",
+    "org.chromium.power": "1.0.3-dev",
+    "org.chromium.pushmessaging": "1.0.2-dev",
+    "org.chromium.system.cpu": "1.0.1-dev",
+    "org.chromium.system.display": "1.0.1-dev",
+    "org.chromium.system.memory": "1.0.1-dev",
+    "org.chromium.system.network": "1.0.1-dev",
+    "org.chromium.videocapture": "1.0.2-dev",
+    "org.chromium.syncfilesystem": "0.1.5-dev",
+    "org.chromium.polyfill.blob_constructor": "1.0.1-dev",
+    "org.chromium.polyfill.customevent": "1.0.3-dev",
+    "org.chromium.polyfill.xhr_features": "1.0.2-dev",
+    "org.apache.cordova.labs.keyboard": "0.1.2",
+    "com.google.payments": "2.0.2-dev",
     "org.apache.cordova.engine.crosswalk": "0.0.1-dev",
-    "org.chromium.common": "1.0.2",
-    "org.chromium.storage": "1.0.2",
-    "org.chromium.runtime": "1.0.2",
+    "org.chromium.apkpackager": "1.0.0",
+    "org.chromium.common": "1.0.3-dev",
+    "org.chromium.storage": "1.0.3-dev",
+    "org.chromium.runtime": "1.0.3-dev",
+    "org.chromium.filechooser": "1.0.2-dev",
     "com.google.playservices": "19.0.0",
     "android.support.v4": "1.0.0",
-    "org.chromium.frameworks.googleopensource": "1.0.0",
-    "org.chromium.frameworks.googleplus": "1.0.1"
+    "org.chromium.frameworks.googleopensource": "1.0.1-dev",
+    "org.chromium.frameworks.googleplus": "1.0.2-dev",
+    "cc.fovea.plugins.inapppurchase": "3.4.1"
 }
 // BOTTOM OF METADATA
 });

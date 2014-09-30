@@ -1713,7 +1713,7 @@ exports.load = function(callback) {
         console.log('Could not find cordova.js script tag. Plugin loading may fail.');
         pathPrefix = '';
     }
-    injectIfNecessary('cordova/plugin_list', pathPrefix + 'cordova_plugins.js', function() {
+    injectIfNecessary('cordova/plugin_list', pathPrefix + (window.THIS_IS_APP_HARNESS ? "cordova_plugins_harness.js" : "cordova_plugins.js"), function() {
         var moduleList = require("cordova/plugin_list");
         handlePluginsObject(pathPrefix, moduleList, callback);
     }, callback);

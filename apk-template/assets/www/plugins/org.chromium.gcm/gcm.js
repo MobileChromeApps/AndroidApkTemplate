@@ -2,116 +2,111 @@ cordova.define("org.chromium.gcm.gcm", function(require, exports, module) { // C
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+/* global cordova */
+/* global chrome */
+
+// TODO: no-op all of these when on iOS
+var platform = cordova.require('cordova/platform');
+
 var GCM_STORAGE_PREFIX = 'gcm-';
-var GCM_REGKEY = GCM_STORAGE_PREFIX+'RegID';
+var GCM_REGKEY = GCM_STORAGE_PREFIX + 'RegID';
 
 var Event = require('org.chromium.common.events');
 var exec = require('cordova/exec');
-var channel = require('cordova/channel');
-var _registrationId;
 
 exports.MAX_MESSAGE_SIZE = 4096;
 
-exports.send = function(message, callback){
-  var win = function(msg) {
-    callback(msg);
-  }
-  var fail = function(msg) {
-    console.log('Send failed: '+msg);
-    callback(msg);
-  }  
-  var dest = message.destinationId;
-  chrome.runtime.lastError=undefined;
-  var n = JSON.stringify(message).length;
-  if(n>4096) {
-     throw(new Error("Payload exceeded allowed size limit. Payload size is: "+n));
-  }
-  console.log('sending to '+dest);
-  exec(win, fail, 'ChromeGcm', 'send',  [dest,message]  );
-}
-
-exports.unregister = function(callback) {
-
-  var unregok = function() {
-    console.log('Cleared registration ');
-    setRegistrationID('');
+exports.send = function(message, callback) {
+  var win = function(msgid) {
+    callback(msgid);
+  };
+  var fail = function() {
+    chrome.runtime.lastError = '[chrome.gcm] Send failed.';
     callback();
-  }
-  var unregfail = function() {
-    chrome.runtime.lastError='Unregistration Failed';
-    callback();
-  }
-  getRegistrationID(function(regid) {
-    chrome.runtime.lastError=undefined;
-    if(regid) {
-      exec(unregok, unregfail, 'ChromeGcm', 'unregister',[''] );
-    } else {
-      console.log('Not registered - skipping de-register');
+  };
+
+  var keys = Object.keys(message);
+  ['destinationId','messageId','data'].forEach(function(required_key) {
+    if (keys.indexOf(required_key) == -1) {
+      throw(new Error("Missing key: " + required_key));
     }
   });
-}
 
-// registration should be cached in localstorage. 
-// If its not there, then registration is required
-exports.register = function(senderid, callback) {
+  var datakeys = Object.keys(message.data).map(function(key) { return key.toLowerCase(); });
+  ['goog','google','collapse_key'].forEach(function(banned_key) {
+    if (datakeys.indexOf(banned_key) != -1) {
+      throw(new Error("Invalid data key: " + banned_key));
+    }
+  });
 
+  var n = JSON.stringify(message.data).length;
+  if (n > 4096) {
+    throw(new Error("Payload exceeded allowed size limit. Payload size is: " + n));
+  }
+
+  exec(win, fail, 'ChromeGcm', 'send', [message]);
+};
+
+exports.register = function(senderids, callback) {
   var win = function(registrationId) {
     setRegistrationID(registrationId);
     callback(registrationId);
-  }
+  };
   var fail = function(msg) {
-    console.log('Registration failed: '+msg);
-    callback(null);
+    chrome.runtime.lastError = '[chrome.gcm] Registration failed: ' + msg;
+    callback();
+  };
+  if (!Array.isArray(senderids) || typeof senderids[0] !== "string" || senderids[0].length == 0) {
+    throw(new Error("Invalid senderids.  Must be an array with 1 non empty string."));
   }
-  chrome.runtime.lastError=undefined;
-  if(senderid[0].length == 0) {
-    throw(new Error("Invalid value for argument 1. Property '.0': String must be at least 1 characters long."));
-  }
-  console.log('starting registration check');
   getRegistrationID(function(regid) {
-    if(!regid) {
-       console.log('Registering');
-       exec(win, fail, 'ChromeGcm', 'getRegistrationId',  senderid );
-    } else {
-      console.log('Using cached  registrationId:' +regid);
-      callback(regid);
+    if (regid) {
+      return callback(regid);
     }
+    exec(win, fail, 'ChromeGcm', 'getRegistrationId', senderids);
+  });
+};
+
+exports.unregister = function(callback) {
+  var win = function() {
+    setRegistrationID('');
+    chrome.runtime.lastError = undefined;
+    callback();
+  };
+  var fail = function(msg) {
+    chrome.runtime.lastError = '[chrome.gcm] Unregistration failed:';
+    callback();
+  };
+  getRegistrationID(function(regid) {
+    if (!regid) {
+      return;
+    }
+    exec(win, fail, 'ChromeGcm', 'unregister', []);
+  });
+};
+
+function setRegistrationID(regid) {
+  var regidObject = {};
+  regidObject[GCM_REGKEY] = regid;
+  chrome.storage.internal.set(regidObject);
+}
+
+function getRegistrationID(callback) {
+  chrome.storage.internal.get(GCM_REGKEY, function(items) {
+    callback(items[GCM_REGKEY]);
   });
 }
 
+function fireQueuedMessages() {
+  exec(undefined, undefined, 'ChromeGcm', 'fireQueuedMessages', []);
+}
 
 exports.onMessage = new Event('onMessage');
 exports.onMessagesDeleted = new Event('onMessagesDeleted');
 exports.onSendError = new Event('onSendError');
 
-
-function setRegistrationID(regid) {
-  var regidObject ={};
-  regidObject[GCM_REGKEY]=regid;
-  chrome.storage.internal.set(regidObject);
-  _registrationId = regid;
+if (platform.id == 'android') {
+  require('org.chromium.common.helpers').runAtStartUp(fireQueuedMessages);
 }
-
-function getRegistrationID(callback) {
-   if(!_registrationId) {
-      chrome.storage.internal.get(GCM_REGKEY,function(items){
-         if(items[GCM_REGKEY]) {
-            _registrationId=items[GCM_REGKEY];
-            callback(_registrationId);
-         } else {
-            callback(null);
-         }
-      });
-   } else {
-     callback(_registrationId);
-   }
-}
-
-function fireQueuedMessages() {
-   console.log('firing queued messages');
-   exec(undefined, undefined, 'ChromeGcm', 'fireQueuedMessages', []);
-}
-
-require('org.chromium.common.helpers').runAtStartUp(fireQueuedMessages);
 
 });
